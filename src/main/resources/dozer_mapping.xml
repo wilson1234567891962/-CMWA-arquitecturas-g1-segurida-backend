@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping  map-id="login-umb" type="one-way">
+        <class-a>com.co.arquitectura.management.domain.service.model.request.LoginRequestDTO</class-a>
+        <class-b>com.co.arquitectura.management.adapter.database.model.request.LoginBDRequestDTO</class-b>
+        <field>
+            <a>user</a>
+            <b>user</b>
+        </field>
+        <field>
+            <a>password</a>
+            <b>password</b>
+        </field>
+    </mapping>
+
+</mappings>
