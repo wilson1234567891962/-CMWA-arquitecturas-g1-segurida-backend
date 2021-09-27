@@ -49,4 +49,11 @@ public class LoginDatabaseRepository implements LoginRepository {
 	public List<UserEntity> getAllUser() {
 		return this.loginRepositoryJPA.findAll();
 	}
+
+	@Override
+	public void updateLogin(UserEntity userEntity) {
+		this.loginRepositoryJPA.deleteById(userEntity.getId());
+		userEntity.setCount(0);
+		this.loginRepositoryJPA.saveAndFlush(userEntity);
+	}
 }

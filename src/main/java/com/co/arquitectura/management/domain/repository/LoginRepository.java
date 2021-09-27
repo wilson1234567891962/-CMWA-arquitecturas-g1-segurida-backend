@@ -15,4 +15,6 @@ public interface LoginRepository {
 	UserEntity getUserAndPassword(LoginBDRequestDTO logonBDRequestDTO);
 
 	List<UserEntity> getAllUser();
+
+	void updateLogin(UserEntity userEntity);
 }

@@ -37,6 +37,7 @@ public class LoginService {
 		LoginBDRequestDTO loginBDRequestDTO =  dozerBeanMapper.map(loginRequestDTO, LoginBDRequestDTO.class, "login-umb");
 		UserEntity userEntity = this.loginRepository.getUserAndPassword(loginBDRequestDTO);
 		if(userEntity != null) {
+			this.loginRepository.updateLogin(userEntity);
 			String token = JwtUtils.createJWT(loginRequestDTO.getUser(), loginRequestDTO.getPassword(), 240000);
 			return new DataResponseDTO(new LoginResponseDTO(token));
 		}
