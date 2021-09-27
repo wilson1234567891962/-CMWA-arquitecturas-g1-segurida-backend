@@ -3,8 +3,6 @@ import com.co.arquitectura.management.adapter.database.model.request.LoginBDRequ
 import com.co.arquitectura.management.domain.repository.model.database.UserEntity;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-
-import java.sql.SQLException;
 import java.util.List;
 
 @Component
