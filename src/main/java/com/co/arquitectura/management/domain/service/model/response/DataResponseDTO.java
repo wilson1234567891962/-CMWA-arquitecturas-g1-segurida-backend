@@ -10,12 +10,12 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DataResponseDTO {
 
-    private LoginResponseDTO data;
+    private Object data;
 
     public DataResponseDTO() {
     }
 
-    public DataResponseDTO(LoginResponseDTO data) {
+    public DataResponseDTO(Object data) {
         this.data = data;
     }
 }

@@ -13,4 +13,6 @@ public interface LoginRepository {
 	final static Logger logger = Logger.getLogger(LoginRepository.class);
 
 	UserEntity getUserAndPassword(LoginBDRequestDTO logonBDRequestDTO);
+
+
 }

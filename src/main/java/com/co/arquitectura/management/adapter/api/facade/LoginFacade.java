@@ -1,4 +1,5 @@
 package com.co.arquitectura.management.adapter.api.facade;
+import com.co.arquitectura.management.domain.service.model.request.HistoricalRequestDTO;
 import com.co.arquitectura.management.domain.service.model.request.LoginRequestDTO;
 import com.co.arquitectura.management.utils.exception.ArchitectureException;
 import com.co.arquitectura.management.domain.service.LoginService;
@@ -23,5 +24,9 @@ public class LoginFacade {
     
     public Object executeLogin(LoginRequestDTO loginRequestDTO) throws ArchitectureException, SQLException, ClassNotFoundException {
         return  this.loginService.executeValidation(loginRequestDTO);
+    }
+
+    public Object executeHistorical(String token, HistoricalRequestDTO historicalRequestDTO) throws ArchitectureException, SQLException, ClassNotFoundException {
+        return  this.loginService.executeHistorical(token,historicalRequestDTO);
     }
 }

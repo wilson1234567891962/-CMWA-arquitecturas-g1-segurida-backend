@@ -1,5 +1,6 @@
 package com.co.arquitectura.management.adapter.api.controller;
 import com.co.arquitectura.management.adapter.api.ApiConst;
+import com.co.arquitectura.management.domain.service.model.request.HistoricalRequestDTO;
 import com.co.arquitectura.management.domain.service.model.request.LoginRequestDTO;
 import com.co.arquitectura.management.utils.exception.ConstantErrors;
 import com.co.arquitectura.management.adapter.api.facade.LoginFacade;
@@ -42,6 +43,24 @@ public class LoginController {
 		try {
 
 			return new ResponseEntity<String>(this.gson.toJson(this.LoginFacade.executeLogin(loginRequestDTO)), HttpStatus.OK);
+		}
+		catch (ArchitectureException e) {
+			logger.error("Se presentaron problemas en el controller getBuses ", e);
+			return new ResponseEntity<String>(new Gson().toJson(ConstantErrors.ERRORS_STATES.get(e.getMessage())),
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		catch (Exception e) {
+			logger.error("Se presentaron problemas enviar la checkFields en el controller getBuses",e);
+			return new ResponseEntity<String> (this.gson.toJson(ConstantErrors.ERRORS_STATES.get(ArchitectureErrorEnum.GENERIC_ERROR.getCode())), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@ApiOperation(value = "getHistorical")
+	@RequestMapping(value = "/getHistorical/", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
+	public ResponseEntity<String>  getHistorial(@RequestHeader(value="Authorization") String token, @RequestBody HistoricalRequestDTO historicalRequestDTO) {
+		try {
+
+			return new ResponseEntity<String>(this.gson.toJson(this.LoginFacade.executeHistorical( token, historicalRequestDTO)), HttpStatus.OK);
 		}
 		catch (ArchitectureException e) {
 			logger.error("Se presentaron problemas en el controller getBuses ", e);
