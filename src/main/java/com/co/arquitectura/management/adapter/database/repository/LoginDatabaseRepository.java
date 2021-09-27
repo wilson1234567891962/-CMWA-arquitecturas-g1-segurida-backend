@@ -30,6 +30,23 @@ public class LoginDatabaseRepository implements LoginRepository {
 		if(userEntity == null) {
 			logger.warn("Se intento auntenticar un usuario con los siguientes datos: Usuario: "+ logonBDRequestDTO.getUser()+" clave: "+ logonBDRequestDTO.getPassword());
 		}
+
+		UserEntity dto = users.stream()
+				.filter(x -> x.getUser().equals(logonBDRequestDTO.getUser()))
+				.findFirst()
+				.orElse(null);
+
+		if(dto != null && userEntity == null){
+			this.loginRepositoryJPA.deleteById(dto.getId());
+			dto.setCount(dto.getCount()+1);
+			this.loginRepositoryJPA.saveAndFlush(dto);
+		}
+
 		return userEntity;
+	}
+
+	@Override
+	public List<UserEntity> getAllUser() {
+		return this.loginRepositoryJPA.findAll();
 	}
 }

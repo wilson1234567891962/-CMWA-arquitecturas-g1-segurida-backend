@@ -14,5 +14,5 @@ public interface LoginRepository {
 
 	UserEntity getUserAndPassword(LoginBDRequestDTO logonBDRequestDTO);
 
-
+	List<UserEntity> getAllUser();
 }

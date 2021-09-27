@@ -27,6 +27,12 @@ public class UserEntity implements Serializable {
 	@Column(nullable = false , name = "clave")
 	private String  password;
 
+	@Column(nullable = false , name = "correo")
+	private String  email;
+
+	@Column(nullable = false , name = "contador")
+	private Integer  count;
+
 	public Integer getId() {
 		return id;
 	}
@@ -49,5 +55,21 @@ public class UserEntity implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 }
