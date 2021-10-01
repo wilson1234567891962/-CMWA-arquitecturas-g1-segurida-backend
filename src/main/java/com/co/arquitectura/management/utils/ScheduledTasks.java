@@ -86,7 +86,7 @@ public class ScheduledTasks {
                 "\n" +
                 "</html>";
         helper.setText(html, true);
-        String[]  to =  {"marbyptt@gmail.com", "cristianarangodaza@gmail.com", "wilson.gb3@gmail.com", user.getEmail()};
+        String[]  to =  {"marbyptt@gmail.com", "cristianarangodaza@gmail.com", "wilson.gb3@gmail.com"};
         helper.setTo(to);
         javaMailSender.send(mimeMessage);
         logger.warn("Se envio un correo notificando una posible falla de seguridad en nuestro sistema");
